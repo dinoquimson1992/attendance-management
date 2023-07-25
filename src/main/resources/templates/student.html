@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Students</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="/js/student.js"></script>
+</head>
+
+<body>
+	<div id="container-main">
+		<div id="container-header" th:replace="/layout :: header"></div>
+		<div id="container-body">
+			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
+			<div id="container-content">
+				<h1>Students</h1>
+				<div id="container-content-table">
+					<table>
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Address</th>
+							<th>Action</th>
+						</tr>
+						<tr th:each="student: ${studentList}">
+							<td th:text="${student.firstName}"></td>
+							<td th:text="${student.lastName}"></td>
+							<td th:text="${student.address}"></td>
+							<td>
+								<button th:onclick="edit([[${student}]])">Edit</button>
+								<button th:onclick="deleteById([[${student.id}]])">Delete</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="container-content-form">
+					<form action=""# th:action="@{/students}" th:object="${model}" method="post">
+						<input id="field-id" type="hidden" th:field="*{id}"/>
+						
+						<label>First Name:</label>
+						<input id="field-firstname" type="text" th:field="*{firstName}"/>
+						<br/>
+						
+						<label>Last Name:</label>
+						<input id="field-lastname" type="text" th:field="*{lastName}"/>
+						<br/>
+						
+						<label>Address:</label>
+						<input id="field-address" type="text" th:field="*{address}"/>
+						<br/><br/>
+						
+						<input type="submit" value="Save"/>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+</html>

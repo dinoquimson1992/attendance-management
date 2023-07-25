@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Student {
@@ -12,10 +13,13 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotNull
 	private String firstName;
 	
+	@NotNull
 	private String lastName;
 	
+	@NotNull
 	private String address;
 
 	public Long getId() {
@@ -48,6 +52,10 @@ public class Student {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public String toString() {
+		return String.format("Student [%s %s, %s]", firstName, lastName, address);
 	}
 
 }
