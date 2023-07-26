@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.genpact.attendance.dto.ClassDto;
 import com.genpact.attendance.entity.Class;
 import com.genpact.attendance.entity.Enrollment;
-import com.genpact.attendance.entity.Student;
 import com.genpact.attendance.repository.ClassRepository;
 import com.genpact.attendance.repository.EnrollmentRepository;
 
@@ -22,7 +23,7 @@ public class ClassService {
 	private EnrollmentRepository enrollmentRepository;
 	
 	@Transactional
-	public void create(com.genpact.attendance.dto.Class dto) {
+	public void create(ClassDto dto) {
 		if(dto == null) throw new IllegalArgumentException("Class cannot be empty!");
 		
 		Class entity = new Class();
@@ -46,7 +47,7 @@ public class ClassService {
 	}
 	
 	@Transactional
-	public void update(com.genpact.attendance.dto.Class dto) {
+	public void update(ClassDto dto) {
 		if(dto == null) throw new IllegalArgumentException("Class cannot be empty!");
 		
 		Class entity = new Class();

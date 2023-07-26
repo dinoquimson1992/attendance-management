@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-import com.genpact.attendance.dto.Class;
+import com.genpact.attendance.dto.ClassDto;
 import com.genpact.attendance.entity.Student;
 import com.genpact.attendance.service.ClassService;
 import com.genpact.attendance.service.StudentService;
@@ -44,7 +44,7 @@ public class ClassController {
 	
 	@GetMapping("/class/new")
 	public String getCreateClassPage(Model model) {
-		Class classDto = new Class();
+		ClassDto classDto = new ClassDto();
 		List<Student> studentList = studentService.getList();
 		
 		model.addAttribute("model", classDto);
@@ -54,13 +54,13 @@ public class ClassController {
 	}
 	
 	@PostMapping("/class")
-	public String createClass(Class classDto) {
+	public String createClass(ClassDto classDto) {
 		classService.create(classDto);
 		return "redirect:/class";
 	}
 	
 	@PutMapping("/class")
-	public String updateClass(Class classDto) {
+	public String updateClass(ClassDto classDto) {
 		classService.update(classDto);
 		return "redirect:/class";
 	}

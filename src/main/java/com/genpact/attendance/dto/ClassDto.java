@@ -2,7 +2,7 @@ package com.genpact.attendance.dto;
 
 import java.util.List;
 
-public class Class {
+public class ClassDto {
 
 	private Long id;
 
@@ -14,9 +14,9 @@ public class Class {
 
 	private List<Long> studentIdList;
 	
-	public Class() {}
+	public ClassDto() {}
 
-	public Class(String name, String schedule, String description, List<Long> studentIdList) {
+	public ClassDto(String name, String schedule, String description, List<Long> studentIdList) {
 		this.name = name;
 		this.schedule = schedule;
 		this.description = description;

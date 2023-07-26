@@ -17,6 +17,19 @@ public class Class {
 	private String schedule;
 	
 	private String description;
+	
+	public Class() {}
+	
+	public Class(Long id) {
+		this.id = id;
+	}
+	
+	public Class(Long id, String name, String schedule, String description) {
+		this.id = id;
+		this.name = name;
+		this.schedule = schedule;
+		this.description = description;
+	}
 
 	public Long getId() {
 		return id;
@@ -50,4 +63,9 @@ public class Class {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return "Class [id=" + id + ", name=" + name + ", schedule=" + schedule + ", description=" + description + "]";
+	}
+	
 }

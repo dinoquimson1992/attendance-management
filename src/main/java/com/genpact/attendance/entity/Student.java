@@ -21,6 +21,19 @@ public class Student {
 	
 	@NotNull
 	private String address;
+	
+	public Student() { }
+	
+	public Student(Long id) {
+		this.id = id;
+	}
+	
+	public Student(Long id, @NotNull String firstName, @NotNull String lastName, @NotNull String address) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+	}
 
 	public Long getId() {
 		return id;
@@ -53,9 +66,11 @@ public class Student {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	public String toString() {
-		return String.format("Student [%s %s, %s]", firstName, lastName, address);
-	}
 
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
+				+ "]";
+	}
+	
 }

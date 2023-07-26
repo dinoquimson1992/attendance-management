@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>New Attendance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div id="container-main">
+		<div id="container-header" th:replace="/layout :: header"></div>
+		<div id="container-body">
+			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
+			<div id="container-content">
+				<form action="#" th:action="@{/attendance}" th:object="${model}" method="post">
+					<label>Class:</label>
+					<label th:text="${model.enrollmentClass.name}"/>
+					<br/>
+					
+					<label>Date:</label>
+					<input id="field-date" type="date" th:field="*{date}"/>
+					<br/>
+					<table>
+						<tr>
+							<th>Student</th>
+							<th>Present</th>
+							<th>Absent</th>
+							<th>Leave</th>
+							<th>Remarks</th>
+						</tr>
+						<tr th:each="attendance: ${model.list}">
+							<td th:text="${attendance.student.firstName}"></td>
+							<td th:text="${attendance.isPresent}"></td>
+							<td th:text="${attendance.isAbsent}"></td>
+							<td th:text="${attendance.isLeave}"></td>
+							<td th:text="${attendance.remarks}"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+</html>

@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Attendance {
@@ -12,9 +14,13 @@ public class Attendance {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private Long class_id;
+	@OneToOne
+	@JoinColumn(name = "class_id")
+	private Class enrollmentClass;
 
-	private Long student_id;
+	@OneToOne
+	@JoinColumn(name = "student_id")
+	private Student student;
 
 	private Boolean isPresent;
 
@@ -32,20 +38,20 @@ public class Attendance {
 		this.id = id;
 	}
 
-	public Long getClass_id() {
-		return class_id;
+	public Class getEnrollmentClass() {
+		return enrollmentClass;
 	}
 
-	public void setClass_id(Long class_id) {
-		this.class_id = class_id;
+	public void setEnrollmentClass(Class enrollmentClass) {
+		this.enrollmentClass = enrollmentClass;
 	}
 
-	public Long getStudent_id() {
-		return student_id;
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setStudent_id(Long student_id) {
-		this.student_id = student_id;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	public Boolean getIsPresent() {
@@ -80,4 +86,10 @@ public class Attendance {
 		this.remarks = remarks;
 	}
 
+	@Override
+	public String toString() {
+		return "Attendance [id=" + id + ", enrollmentClass=" + enrollmentClass + ", student=" + student + ", isPresent="
+				+ isPresent + ", isAbsent=" + isAbsent + ", isLeave=" + isLeave + ", remarks=" + remarks + "]";
+	}
+	
 }
