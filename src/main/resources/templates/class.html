@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Classes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div id="container-main">
+		<div id="container-header" th:replace="/layout :: header"></div>
+		<div id="container-body">
+			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
+			<div id="container-content">
+				<div th:each="class: ${list}">
+					<button>
+						<h3 th:text="${class.name}"></h3>
+						<p th:text="${class.description}"></p>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+</html>

@@ -14,13 +14,9 @@ public class Enrollment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@OneToOne
-	@JoinColumn(name = "class_id")
-	private Class enrollmentClass;
+	private Long classId;
 
-	@OneToOne
-	@JoinColumn(name = "student_id")
-	private Student student;
+	private Long studentId;
 
 	public Long getId() {
 		return id;
@@ -30,20 +26,25 @@ public class Enrollment {
 		this.id = id;
 	}
 
-	public Class getEnrollmentClass() {
-		return enrollmentClass;
+	public Long getClassId() {
+		return classId;
 	}
 
-	public void setEnrollmentClass(Class enrollmentClass) {
-		this.enrollmentClass = enrollmentClass;
+	public void setClassId(Long classId) {
+		this.classId = classId;
 	}
 
-	public Student getStudent() {
-		return student;
+	public Long getStudentId() {
+		return studentId;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
 	}
 
+	@Override
+	public String toString() {
+		return "Enrollment [id=" + id + ", classId=" + classId + ", studentId=" + studentId + "]";
+	}
+	
 }

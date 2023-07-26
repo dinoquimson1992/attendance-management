@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Class Detail</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div id="container-main">
+		<div id="container-header" th:replace="/layout :: header"></div>
+		<div id="container-body">
+			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
+			<div id="container-content">
+				<label>Name:</label>
+				<label th:text="${model.name}"></label>
+				<br/>
+				
+				<label>Description:</label>
+				<label th:text="${model.description}"></label>
+				<br/>
+				
+				<label>Schedule:</label>
+				<label th:text="${model.schedule}"></label>
+				<br/><br/>
+				
+				<label>Students:</label>
+				<br/>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+</html>

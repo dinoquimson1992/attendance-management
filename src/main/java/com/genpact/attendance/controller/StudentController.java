@@ -21,7 +21,7 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 	
-	@GetMapping("/students")
+	@GetMapping("/student")
 	public String getStudentPage(Model model) {
 		Student student = new Student();
 		List<Student> studentList = studentService.getList();
@@ -32,7 +32,7 @@ public class StudentController {
 		return "student";
 	}
 	
-	@PostMapping("/students")
+	@PostMapping("/student")
 	public String addStudent(Student student, Model model) {
 		studentService.save(student);
 		

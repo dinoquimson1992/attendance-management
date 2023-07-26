@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Classes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<div id="container-main">
+		<div id="container-header" th:replace="/layout :: header"></div>
+		<div id="container-body">
+			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
+			<div id="container-content">
+				<div id="container-content-class">
+					<form action="#" th:action="@{/class}" th:object="${model}" method="post">
+						<input id="field-id" type="hidden" th:field="*{id}"/>
+						
+						<label>Name:</label>
+						<input id="field-name" type="text" th:field="*{name}"/>
+						<br/>
+						
+						<label>Description:</label>
+						<input id="field-description" type="text" th:field="*{description}"/>
+						<br/>
+						
+						<label>Schedule:</label>
+						<input id="field-schedule" type="text" th:field="*{schedule}"/>
+						<br/>
+						
+						<label>Students:</label>
+						<div th:each="student: ${list}">
+							<input type="checkbox" th:field="*{studentIdList}" th:value="${student.id}" th:text="${student.firstName + ' ' + student.lastName}" />
+						</div>
+						
+						<input type="submit" value="Save"/>
+					</form>
+				</div>
+				<div id="container-content-student"></div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+</html>
