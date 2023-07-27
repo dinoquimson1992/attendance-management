@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>New Attendance</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script>
+		function enableSearchMode(){
+			document.getElementById("search-mode").value = true;
+			console.log('enableSearchMode: ' + document.getElementById("search-mode").value);
+		}
+	</script>
+</head>
+
+<body>
+	<div id="container-main">
+		<div id="container-header" th:replace="/layout :: header"></div>
+		<div id="container-body">
+			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
+			<div id="container-content">
+				<form action="#" th:action="@{/attendance}" th:object="${model}" method="post">
+					<input type="hidden" th:field="*{enrollmentClass}"/>
+					<input id="search-mode" type="hidden" th:field="*{searchMode}" th:value="${model.searchMode}"/>
+					
+					<label>Class:</label>
+					<label th:text="${model.enrollmentClass.name}"/>
+					<br/>
+					
+					<label>Date:</label>
+					<input id="field-date" type="date" th:field="*{date}"/>
+					<input type="submit" value="Search" onclick="enableSearchMode()"/>
+					<br/>
+					<table>
+						<tr>
+							<th>Student</th>
+							<th>Present</th>
+							<th>Absent</th>
+							<th>Leave</th>
+							<th>Remarks</th>
+						</tr>
+						<tr th:each="attendance, status : *{list}">
+							<input type="hidden" th:field="*{list[__${status.index}__].id}" th:value="${attendance.id}" />
+							<input type="hidden" th:field="*{list[__${status.index}__].enrollmentClass}" th:value="${attendance.enrollmentClass}" />
+							<input type="hidden" th:field="*{list[__${status.index}__].student}" th:value="${attendance.student}" />
+							
+							<td th:text="${attendance.student.firstName + ' ' + attendance.student.lastName}"></td>
+							<td><input type="checkbox" th:field="*{list[__${status.index}__].isPresent}" th:value="${attendance.isPresent}" /></td>
+							<td><input type="checkbox" th:field="*{list[__${status.index}__].isAbsent}" th:value="${attendance.isAbsent}" /></td>
+							<td><input type="checkbox" th:field="*{list[__${status.index}__].isLeave}" th:value="${attendance.isLeave}" /></td>
+							<td><input type="text" th:field="*{list[__${status.index}__].remarks}" th:value="${attendance.remarks}" /></td>
+						</tr>
+					</table>
+					<input type="submit" value="Save"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+</html>

@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Attendance {
@@ -14,13 +14,15 @@ public class Attendance {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "class_id")
 	private Class enrollmentClass;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "student_id")
 	private Student student;
+	
+	private String date;
 
 	private Boolean isPresent;
 
@@ -52,6 +54,14 @@ public class Attendance {
 
 	public void setStudent(Student student) {
 		this.student = student;
+	}
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public Boolean getIsPresent() {

@@ -74,7 +74,7 @@ public class ClassService {
 		return classRepository.findAll();
 	}
 	
-	public Class findById(Long id) {
+	public Class getClassById(Long id) {
 		return classRepository.findById(id).get();
 	}
 

@@ -12,6 +12,8 @@ public class AttendanceSearchDto {
 	private String date;
 	
 	private List<Attendance> list;
+	
+	private boolean searchMode = false;
 
 	public AttendanceSearchDto() { }
 
@@ -43,6 +45,19 @@ public class AttendanceSearchDto {
 
 	public void setList(List<Attendance> list) {
 		this.list = list;
+	}
+	
+	public boolean isSearchMode() {
+		return searchMode;
+	}
+
+	public void setSearchMode(boolean searchMode) {
+		this.searchMode = searchMode;
+	}
+
+	@Override
+	public String toString() {
+		return "AttendanceSearchDto [class=" + enrollmentClass + ", date=" + date + ", list=" + list + "]";
 	}
 	
 }

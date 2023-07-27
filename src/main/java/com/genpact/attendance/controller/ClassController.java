@@ -35,7 +35,7 @@ public class ClassController {
 	
 	@GetMapping("/class/{id}")
 	public String getClassPageById(@PathVariable Long id, Model model) {
-		com.genpact.attendance.entity.Class c = classService.findById(id);
+		com.genpact.attendance.entity.Class c = classService.getClassById(id);
 		
 		model.addAttribute("model", c);
 		

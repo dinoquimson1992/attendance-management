@@ -4,6 +4,12 @@
 <head>
 	<title>Attendance</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script>
+		function openAttendance(classId){
+			var url = "http://localhost:8080/attendance/" + classId; 
+			window.location.href =  url;
+		}
+	</script>
 </head>
 
 <body>
@@ -12,9 +18,9 @@
 		<div id="container-body">
 			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
 			<div id="container-content">
-				<h3>Please select a class:</h3>
+				<h3>Please select a class to view an attendance:</h3>
 				<div th:each="class: ${list}">
-					<button th:onclick="viewClass([[${class.id}]])">
+					<button th:onclick="openAttendance([[${class.id}]])">
 						<h3 th:text="${class.name}"></h3>
 						<p th:text="${class.description}"></p>
 					</button>
