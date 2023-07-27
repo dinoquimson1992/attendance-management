@@ -45,7 +45,7 @@ public class StudentController {
 		return "student";
 	}
 	
-	@GetMapping("/students/delete/{id}")
+	@GetMapping("/student/delete/{id}")
 	@ResponseBody
 	public ResponseEntity<Boolean> delete(@PathVariable Long id) {
 		try {

@@ -4,6 +4,7 @@
 <head>
 	<title>Classes</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="/css/main.css" />
 	<script src="/js/class.js"></script>
 </head>
 
@@ -13,11 +14,14 @@
 		<div id="container-body">
 			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
 			<div id="container-content">
-				<div th:each="class: ${list}">
-					<button th:onclick="viewClass([[${class.id}]])">
-						<h3 th:text="${class.name}"></h3>
-						<p th:text="${class.description}"></p>
+				<h2>Classes &nbsp;[&nbsp;<a href="/class/new" title="New Class">+</a>&nbsp;]</h2>
+				<div class="container-button">
+					<div th:each="class: ${list}">
+					<button class="button-class" th:onclick="viewClass([[${class.id}]])">
+						<h3 class="button-class-name" th:text="${class.name}"></h3>
+						<p class="button-class-description" th:text="${class.description}"></p>
 					</button>
+				</div>
 				</div>
 			</div>
 		</div>

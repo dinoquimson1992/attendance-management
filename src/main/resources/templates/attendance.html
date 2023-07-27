@@ -4,6 +4,7 @@
 <head>
 	<title>Attendance</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="/css/main.css" />
 	<script>
 		function openAttendance(classId){
 			var url = "http://localhost:8080/attendance/" + classId; 
@@ -19,11 +20,13 @@
 			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
 			<div id="container-content">
 				<h3>Please select a class to view an attendance:</h3>
-				<div th:each="class: ${list}">
-					<button th:onclick="openAttendance([[${class.id}]])">
-						<h3 th:text="${class.name}"></h3>
-						<p th:text="${class.description}"></p>
+				<div class="container-button">
+					<div th:each="class: ${list}">
+					<button class="button-class" th:onclick="openAttendance([[${class.id}]])">
+						<h3 class="button-class-name" th:text="${class.name}"></h3>
+						<p class="button-class-description" th:text="${class.description}"></p>
 					</button>
+				</div>
 				</div>
 			</div>
 		</div>

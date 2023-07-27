@@ -1,0 +1,136 @@
+/* basic components */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body, table {
+	background-color: white;
+}
+
+a {
+	font-size: 20px;
+}
+
+label, input {
+	font-size: 18px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+	padding: 5px;
+}
+
+/* header */
+#container-header {
+	height: 60px;
+	border-bottom: 2px solid gray;
+}
+
+#container-header h1 {
+	margin-left: 10px;
+}
+
+/* body */
+#container-body {
+	display: flex;
+	flex-direction: row;
+}
+
+/* sidebar */
+#container-sidebar {
+	width: 180px;
+	height: 100%;
+}
+
+#container-sidebar ul {
+	list-style-type: none;
+	padding: 15px;
+}
+
+#container-sidebar ul li {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* content */
+#container-content {
+	width: 100%;
+	height: calc(100vh - 105px);
+	padding: 10px;
+	background-color: #f7f7f7;
+}
+
+#container-content .button-class {
+	width: 250px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	text-align: left;
+}
+
+#container-content .container-button {
+	display: flex;
+	flex-direction: row;
+	overflow: hidden;
+}
+
+#container-content-student {
+	display: flex;
+	flex-direction: row;
+}
+
+#container-content-student table {
+	margin-right: 30px;
+}
+
+#container-content-student label {
+	display: inline-block;
+	width: 100px;
+}
+
+#container-content-student label, #container-content-student input {
+	margin-bottom: 10px;
+}
+
+#container-content-student input[type='submit'] {
+	float: right;
+}
+
+#container-content-classdetail label {
+	display: inline-block;
+	width: 100px;
+}
+
+#container-content-classdetail label, #container-content-classdetail input {
+	margin-bottom: 5px;
+}
+
+#container-content-class form label {
+	display: inline-block;
+	width: 100px;
+}
+
+#container-content-class form label, #container-content-class form input {
+	margin-bottom: 5px;
+}
+
+#container-content-class form input[type='checkbox'] {
+	width:20px;
+    height:20px;
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+
+.container-checkbox {
+	text-align: center;
+}
+
+.container-checkbox input[type='checkbox'] {
+	width:20px;
+    height:20px;
+}

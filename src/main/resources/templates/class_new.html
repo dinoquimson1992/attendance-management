@@ -4,6 +4,7 @@
 <head>
 	<title>Classes</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="/css/main.css" />
 </head>
 
 <body>
@@ -13,6 +14,7 @@
 			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
 			<div id="container-content">
 				<div id="container-content-class">
+					<h2>New Class</h2>
 					<form action="#" th:action="@{/class}" th:object="${model}" method="post">
 						<input id="field-id" type="hidden" th:field="*{id}"/>
 						
@@ -26,12 +28,13 @@
 						
 						<label>Schedule:</label>
 						<input id="field-schedule" type="text" th:field="*{schedule}"/>
-						<br/>
+						<br/><br/>
 						
-						<label>Students:</label>
+						<label style="font-weight: bold;">Students:</label>
 						<div th:each="student: ${list}">
 							<input type="checkbox" th:field="*{studentIdList}" th:value="${student.id}" th:text="${student.firstName + ' ' + student.lastName}" />
 						</div>
+						<br/>
 						
 						<input type="submit" value="Save"/>
 					</form>

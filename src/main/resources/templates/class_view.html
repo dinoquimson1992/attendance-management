@@ -4,6 +4,7 @@
 <head>
 	<title>Class Detail</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="/css/main.css" />
 </head>
 
 <body>
@@ -12,19 +13,23 @@
 		<div id="container-body">
 			<div id="container-sidebar" th:replace="/layout :: sidebar"></div>
 			<div id="container-content">
-				<label>Name:</label>
-				<label th:text="${model.name}"></label>
-				<br/>
+				<div id="container-content-classdetail">
+					<h2>Class Detail</h2>
 				
-				<label>Description:</label>
-				<label th:text="${model.description}"></label>
-				<br/>
-				
-				<label>Schedule:</label>
-				<label th:text="${model.schedule}"></label>
-				<br/><br/>
-				
-				<label>Students:</label>
+					<label>Name:</label>
+					<input type="text" th:value="${model.name}" readonly="true" />			
+					<br/>
+					
+					<label>Description:</label>
+					<input type="text" th:value="${model.description}" readonly="true" />
+					<br/>
+					
+					<label>Schedule:</label>
+					<input type="text" th:value="${model.schedule}" readonly="true" />
+					<br/><br/>
+					
+					<label>Students:</label>
+				</div>
 				<br/>
 			</div>
 		</div>
