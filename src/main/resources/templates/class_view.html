@@ -17,18 +17,21 @@
 					<h2>Class Detail</h2>
 				
 					<label>Name:</label>
-					<input type="text" th:value="${model.name}" readonly="true" />			
+					<input type="text" th:value="${model.name}" readonly="true" size="40"/>			
 					<br/>
 					
 					<label>Description:</label>
-					<input type="text" th:value="${model.description}" readonly="true" />
+					<textarea th:text="${model.description}" readonly="true" rows="4" cols="55"></textarea>
 					<br/>
 					
 					<label>Schedule:</label>
 					<input type="text" th:value="${model.schedule}" readonly="true" />
 					<br/><br/>
 					
-					<label>Students:</label>
+					<label style="font-weight: bold;">Students:</label>
+					<ul>
+						<li th:each="student: ${list}" th:text="${student.firstName + ' ' + student.lastName}"></li>
+					</ul>
 				</div>
 				<br/>
 			</div>

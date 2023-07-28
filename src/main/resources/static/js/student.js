@@ -7,7 +7,6 @@ function edit(student){
 
 async function deleteById(id){
 	var url = "http://localhost:8080/student/delete/" + id;
-	console.log("url: " + url);
 	await fetch(url);
 	location.reload();
 }

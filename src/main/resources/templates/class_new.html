@@ -19,11 +19,11 @@
 						<input id="field-id" type="hidden" th:field="*{id}"/>
 						
 						<label>Name:</label>
-						<input id="field-name" type="text" th:field="*{name}"/>
+						<input id="field-name" type="text" th:field="*{name}" size="40"/>
 						<br/>
 						
 						<label>Description:</label>
-						<input id="field-description" type="text" th:field="*{description}"/>
+						<textarea id="field-description" th:field="*{description}" rows="4" cols="55"></textarea>
 						<br/>
 						
 						<label>Schedule:</label>
@@ -32,7 +32,7 @@
 						
 						<label style="font-weight: bold;">Students:</label>
 						<div th:each="student: ${list}">
-							<input type="checkbox" th:field="*{studentIdList}" th:value="${student.id}" th:text="${student.firstName + ' ' + student.lastName}" />
+							<input type="checkbox" th:field="*{studentIdList}" th:value="${student.id}" th:text="${' ' + student.firstName + ' ' + student.lastName}" />
 						</div>
 						<br/>
 						

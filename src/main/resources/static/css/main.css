@@ -12,8 +12,12 @@ a {
 	font-size: 20px;
 }
 
-label, input {
+label, input, ul, li {
 	font-size: 18px;
+}
+
+textarea {
+	font-size: 17px;
 }
 
 table, th, td {
@@ -60,21 +64,32 @@ th, td {
 /* content */
 #container-content {
 	width: 100%;
-	height: calc(100vh - 105px);
+	min-height: calc(100vh - 105px);
 	padding: 10px;
 	background-color: #f7f7f7;
 }
 
 #container-content .button-class {
-	width: 250px;
+	width: 350px;
+	min-height: 110px;
+	max-height: 110px;
 	margin-right: 10px;
 	margin-bottom: 10px;
 	text-align: left;
+	overflow: hidden;
+	background-color: white;
+	border: 1px solid gray;
+}
+
+#container-content .button-class:hover {
+	cursor: pointer;
+	border: 1px solid black;
 }
 
 #container-content .container-button {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	overflow: hidden;
 }
 
@@ -103,6 +118,7 @@ th, td {
 #container-content-classdetail label {
 	display: inline-block;
 	width: 100px;
+	vertical-align: top;
 }
 
 #container-content-classdetail label, #container-content-classdetail input {
@@ -112,6 +128,7 @@ th, td {
 #container-content-class form label {
 	display: inline-block;
 	width: 100px;
+	vertical-align: top;
 }
 
 #container-content-class form label, #container-content-class form input {
@@ -133,4 +150,8 @@ th, td {
 .container-checkbox input[type='checkbox'] {
 	width:20px;
     height:20px;
+}
+
+#container-content .button-class {
+	vertical-align: top;
 }
