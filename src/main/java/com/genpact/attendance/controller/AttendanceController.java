@@ -48,8 +48,6 @@ public class AttendanceController {
 		
 		model.addAttribute("model", dto);
 		
-		System.out.println("Date: " + dto.getDate());
-		
 		return "attendance_save";
 	}
 	
@@ -57,8 +55,6 @@ public class AttendanceController {
 	@Transactional
 	public String createClassPage(AttendanceSearchDto dto, Model model) {
 		List<Attendance> attendanceList = dto.getList();
-		
-		System.out.println("Search Mode: " + dto.isSearchMode());
 		
 		if(!dto.isSearchMode()) {
 			for(Attendance attendance: attendanceList) {
