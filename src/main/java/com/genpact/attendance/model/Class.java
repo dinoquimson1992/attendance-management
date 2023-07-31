@@ -28,7 +28,7 @@ public class Class {
 	@OneToMany(mappedBy="enrollmentClass")
 	private List<Attendance> attendanceList;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name="enrollment", joinColumns=@JoinColumn(name="class_id"), inverseJoinColumns=@JoinColumn(name="student_id"))
 	private List<Student> studentList;
 	
