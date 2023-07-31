@@ -7,10 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.genpact.attendance.entity.Attendance;
-import com.genpact.attendance.entity.Class;
-import com.genpact.attendance.entity.Enrollment;
-import com.genpact.attendance.entity.Student;
+import com.genpact.attendance.model.Attendance;
+import com.genpact.attendance.model.Class;
+import com.genpact.attendance.model.Student;
 import com.genpact.attendance.repository.AttendanceRepository;
 
 @Service
@@ -18,12 +17,6 @@ public class AttendanceService {
 	
 	@Autowired
 	private AttendanceRepository attendanceRepository;
-	
-	@Autowired
-	private EnrollmentService enrollmentService;
-	
-	@Autowired
-	private StudentService studentService;
 	
 	@Autowired
 	private ClassService classService;
@@ -34,25 +27,18 @@ public class AttendanceService {
 	
 	public List<Attendance> buildAttendanceList(Long classId, String date){
 		List<Attendance> attendanceList = getAttendanceListByClassId(classId);
-		List<Enrollment> enrollmentList = enrollmentService.getListByClassId(classId);
+		Class studentClass = classService.getClassById(classId);
 		List<Attendance> result = new ArrayList<Attendance>();
 		
-		for(Enrollment enrollment: enrollmentList) {
-			Optional<Attendance> attendance = null;
-			if(date == null) attendance = attendanceList.stream()
-					.filter(a -> a.getStudent().getId().equals(enrollment.getStudentId()))
-					.findFirst();
-			if(date != null) attendance = attendanceList.stream()
-					.filter(a -> a.getStudent().getId().equals(enrollment.getStudentId()))
+		for(Student student: studentClass.getStudentList()) {
+			Optional<Attendance> attendance = attendanceList.stream()
+					.filter(a -> student.getId().equals(a.getStudent().getId()))
 					.filter(a -> date.equals(a.getDate()))
 					.findFirst();
 			
 			if(!attendance.isPresent()) {
-				Class enrollmentClass = classService.getClassById(enrollment.getClassId());
-				Student student = studentService.getStudentById(enrollment.getStudentId());
-				
 				Attendance attendance2 = new Attendance();
-				attendance2.setEnrollmentClass(enrollmentClass);
+				attendance2.setEnrollmentClass(studentClass);
 				attendance2.setStudent(student);
 				
 				result.add(attendance2);

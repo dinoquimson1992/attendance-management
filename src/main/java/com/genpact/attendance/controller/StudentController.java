@@ -1,6 +1,7 @@
 package com.genpact.attendance.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.genpact.attendance.entity.Student;
+import com.genpact.attendance.dto.StudentDto;
+import com.genpact.attendance.model.Student;
 import com.genpact.attendance.service.StudentService;
 
 @Controller
@@ -24,7 +26,8 @@ public class StudentController {
 	@GetMapping("/student")
 	public String getStudentPage(Model model) {
 		Student student = new Student();
-		List<Student> studentList = studentService.getList();
+		List<Student> list = studentService.getList();
+		List<StudentDto> studentList = list.stream().map(s -> StudentDto.convertFromEntity(s)).collect(Collectors.toList());
 		
 		model.addAttribute("model", student);
 		model.addAttribute("studentList", studentList);
@@ -37,7 +40,8 @@ public class StudentController {
 		studentService.save(student);
 		
 		student = new Student();
-		List<Student> studentList = studentService.getList();
+		List<Student> list = studentService.getList();
+		List<StudentDto> studentList = list.stream().map(s -> StudentDto.convertFromEntity(s)).collect(Collectors.toList());
 		
 		model.addAttribute("model", student);
 		model.addAttribute("studentList", studentList);

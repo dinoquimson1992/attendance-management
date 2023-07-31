@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import com.genpact.attendance.dto.ClassDto;
-import com.genpact.attendance.entity.Class;
-import com.genpact.attendance.entity.Student;
+import com.genpact.attendance.model.Class;
+import com.genpact.attendance.model.Student;
 import com.genpact.attendance.service.ClassService;
 import com.genpact.attendance.service.StudentService;
 
@@ -37,7 +37,7 @@ public class ClassController {
 	@GetMapping("/class/{id}")
 	public String getClassPageById(@PathVariable Long id, Model model) {
 		Class c = classService.getClassById(id);
-		List<Student> list = studentService.getListByClassId(id);
+		List<Student> list = c.getStudentList();
 		
 		model.addAttribute("model", c);
 		model.addAttribute("list", list);
@@ -58,13 +58,13 @@ public class ClassController {
 	
 	@PostMapping("/class")
 	public String createClass(ClassDto classDto) {
-		classService.create(classDto);
+		classService.save(classDto);
 		return "redirect:/class";
 	}
 	
 	@PutMapping("/class")
 	public String updateClass(ClassDto classDto) {
-		classService.update(classDto);
+		classService.save(classDto);
 		return "redirect:/class";
 	}
 

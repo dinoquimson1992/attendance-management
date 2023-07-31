@@ -2,8 +2,8 @@ package com.genpact.attendance.dto;
 
 import java.util.List;
 
-import com.genpact.attendance.entity.Attendance;
-import com.genpact.attendance.entity.Class;
+import com.genpact.attendance.model.Attendance;
+import com.genpact.attendance.model.Class;
 
 public class AttendanceSearchDto {
 

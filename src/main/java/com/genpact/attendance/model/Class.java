@@ -1,9 +1,16 @@
-package com.genpact.attendance.entity;
+package com.genpact.attendance.model;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Class {
@@ -17,6 +24,13 @@ public class Class {
 	private String schedule;
 	
 	private String description;
+	
+	@OneToMany(mappedBy="enrollmentClass")
+	private List<Attendance> attendanceList;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="enrollment", joinColumns=@JoinColumn(name="class_id"), inverseJoinColumns=@JoinColumn(name="student_id"))
+	private List<Student> studentList;
 	
 	public Class() {}
 	
@@ -61,6 +75,22 @@ public class Class {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public List<Attendance> getAttendanceList() {
+		return attendanceList;
+	}
+
+	public void setAttendanceList(List<Attendance> attendanceList) {
+		this.attendanceList = attendanceList;
+	}
+	
+	public List<Student> getStudentList() {
+		return studentList;
+	}
+
+	public void setStudentList(List<Student> studentList) {
+		this.studentList = studentList;
 	}
 
 	@Override

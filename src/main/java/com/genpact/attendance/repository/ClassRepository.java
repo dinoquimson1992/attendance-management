@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.genpact.attendance.entity.Class;
+import com.genpact.attendance.model.Class;
 
 public interface ClassRepository extends CrudRepository<Class,Long> {
 	

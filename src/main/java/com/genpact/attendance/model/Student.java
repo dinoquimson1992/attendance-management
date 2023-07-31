@@ -1,10 +1,13 @@
-package com.genpact.attendance.entity;
+package com.genpact.attendance.model;
+
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -13,26 +16,22 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@NotNull
 	private String firstName;
 	
-	@NotNull
 	private String lastName;
 	
-	@NotNull
 	private String address;
+	
+	@OneToMany(mappedBy="student")
+	private List<Attendance> attendanceList;
+	
+	@ManyToMany(mappedBy="studentList")
+	private List<Class> classList;
 	
 	public Student() { }
 	
 	public Student(Long id) {
 		this.id = id;
-	}
-	
-	public Student(Long id, @NotNull String firstName, @NotNull String lastName, @NotNull String address) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
 	}
 
 	public Long getId() {
@@ -65,6 +64,22 @@ public class Student {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public List<Attendance> getAttendanceList() {
+		return attendanceList;
+	}
+
+	public void setAttendanceList(List<Attendance> attendanceList) {
+		this.attendanceList = attendanceList;
+	}
+	
+	public List<Class> getClassList() {
+		return classList;
+	}
+
+	public void setClassList(List<Class> classList) {
+		this.classList = classList;
 	}
 
 	@Override

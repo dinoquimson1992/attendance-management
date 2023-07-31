@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.genpact.attendance.dto.AttendanceSearchDto;
-import com.genpact.attendance.entity.Attendance;
-import com.genpact.attendance.entity.Class;
+import com.genpact.attendance.model.Attendance;
+import com.genpact.attendance.model.Class;
 import com.genpact.attendance.service.AttendanceService;
 import com.genpact.attendance.service.ClassService;
 

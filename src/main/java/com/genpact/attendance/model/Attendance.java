@@ -1,4 +1,4 @@
-package com.genpact.attendance.entity;
+package com.genpact.attendance.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
