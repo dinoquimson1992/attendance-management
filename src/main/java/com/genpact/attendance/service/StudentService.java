@@ -1,7 +1,6 @@
 package com.genpact.attendance.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,32 +16,22 @@ public class StudentService {
 	private StudentRepository studentRepository;
 	
 	public void save(Student student) {
+		if(student == null) throw new IllegalArgumentException("Student cannot be null!");
 		studentRepository.save(student);
 	}
 	
-	public void delete(Long id) throws StudentNotFoundException {
-		Optional<Student> student = studentRepository.findById(id);
-		if(student.isPresent()) studentRepository.delete(student.get());
-		else throw new StudentNotFoundException();
+	public void delete(Long id) {
+		if(id == null || id == 0) throw new IllegalArgumentException("ID cannot be null!");
+		Student student = studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException());
+		studentRepository.delete(student);
 	}
 	
 	public List<Student> getList(){
 		return studentRepository.findAll();
 	}
 	
-//	public List<Student> getListByClassId(Long classId){
-//		List<Enrollment> enrollmentList = enrollmentService.getListByClassId(classId);
-//		List<Student> result = new ArrayList<Student>();
-//		
-//		for(Enrollment enrollment: enrollmentList) {
-//			Student student = getStudentById(enrollment.getStudentId());
-//			result.add(student);
-//		}
-//		
-//		return result;
-//	}
-	
 	public Student getStudentById(Long studentId) {
+		if(studentId == null || studentId == 0) throw new IllegalArgumentException("Student ID cannot be null!");
 		return studentRepository.findById(studentId).get();
 	}
 

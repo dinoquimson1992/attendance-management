@@ -51,14 +51,10 @@ public class StudentController {
 	
 	@GetMapping("/student/delete/{id}")
 	@ResponseBody
-	public ResponseEntity<Boolean> delete(@PathVariable Long id) {
-		try {
-			studentService.delete(id);
-		}catch(Exception e) {
-			new ResponseEntity<Boolean>(false, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+	public ResponseEntity<String> delete(@PathVariable Long id) {
+		studentService.delete(id);
 		
-		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+		return new ResponseEntity<String>("Student was successfully deleted.", HttpStatus.OK);
 	}
 
 }

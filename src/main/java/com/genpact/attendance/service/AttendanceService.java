@@ -22,10 +22,14 @@ public class AttendanceService {
 	private ClassService classService;
 	
 	public List<Attendance> getAttendanceListByClassId(Long classId){
+		if(classId == null || classId == 0) throw new IllegalArgumentException("Class ID cannot be null!");
 		return attendanceRepository.findByEnrollmentClass_Id(classId);
 	}
 	
 	public List<Attendance> buildAttendanceList(Long classId, String date){
+		if(classId == null || classId == 0) throw new IllegalArgumentException("Class ID cannot be null!");
+		if(date == null || date.isEmpty()) throw new IllegalArgumentException("Date cannot be null!");
+		
 		List<Attendance> attendanceList = getAttendanceListByClassId(classId);
 		Class studentClass = classService.getClassById(classId);
 		List<Attendance> result = new ArrayList<Attendance>();

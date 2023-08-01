@@ -1,6 +1,6 @@
 package com.genpact.attendance.exception;
 
-public class StudentNotFoundException extends RuntimeException {
+public class ApplicationException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 

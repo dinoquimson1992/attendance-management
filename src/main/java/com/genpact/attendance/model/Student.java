@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Student {
@@ -16,10 +18,16 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotNull
+	@NotEmpty
 	private String firstName;
 	
+	@NotNull
+	@NotEmpty
 	private String lastName;
 	
+	@NotNull
+	@NotEmpty
 	private String address;
 	
 	@OneToMany(mappedBy="student")

@@ -48,12 +48,15 @@ th, td {
 /* sidebar */
 #container-sidebar {
 	width: 180px;
-	height: 100%;
+	height: calc(100vh - 105px);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 #container-sidebar ul {
 	list-style-type: none;
-	padding: 15px;
+	padding-left: 15px;
 }
 
 #container-sidebar ul li {

@@ -38,35 +38,12 @@ public class ClassService {
 		classRepository.save(entity);
 	}
 	
-//	@Transactional
-//	public void update(ClassDto dto) {
-//		if(dto == null) throw new IllegalArgumentException("Class cannot be empty!");
-//		
-//		Class entity = new Class();
-//		entity.setId(dto.getId());
-//		entity.setName(dto.getName());
-//		entity.setDescription(dto.getDescription());
-//		entity.setSchedule(dto.getSchedule());
-//		
-//		classRepository.save(entity);
-//		enrollmentRepository.deleteByClassId(entity.getId());
-//		
-//		List<Long> studentIdList = dto.getStudentIdList();
-//		
-//		for(Long id: studentIdList) {
-//			Enrollment enrollment = new Enrollment();
-//			enrollment.setStudentId(id);
-//			enrollment.setClassId(entity.getId());
-//			
-//			enrollmentRepository.save(enrollment);
-//		}
-//	}
-	
 	public List<Class> getList(){
 		return classRepository.findAll();
 	}
 	
 	public Class getClassById(Long id) {
+		if(id == null || id == 0) throw new IllegalArgumentException("Class ID cannot be null!");
 		return classRepository.findById(id).get();
 	}
 

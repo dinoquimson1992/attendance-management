@@ -6,6 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Attendance {
@@ -22,6 +24,8 @@ public class Attendance {
 	@JoinColumn(name = "student_id")
 	private Student student;
 	
+	@NotNull
+	@NotEmpty
 	private String date;
 
 	private Boolean isPresent;

@@ -11,6 +11,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Class {
@@ -19,10 +21,16 @@ public class Class {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotNull
+	@NotEmpty
 	private String name;
 	
+	@NotNull
+	@NotEmpty
 	private String schedule;
 	
+	@NotNull
+	@NotEmpty
 	private String description;
 	
 	@OneToMany(mappedBy="enrollmentClass")
